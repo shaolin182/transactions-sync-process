@@ -25,4 +25,4 @@ jobs:
       run: ./gradlew -i build
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        GITHUB_USERNAME: shaolin182
