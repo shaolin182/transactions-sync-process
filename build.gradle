@@ -11,6 +11,14 @@ sourceCompatibility = '11'
 repositories {
 	mavenCentral()
 	mavenLocal()
+	maven {
+		name = "GitHubPackages"
+		url = uri("https://maven.pkg.github.com/shaolin182/transactions-java")
+		credentials {
+			username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+			password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+		}
+	}
 }
 
 dependencies {
