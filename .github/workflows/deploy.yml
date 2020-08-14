@@ -1,6 +1,7 @@
 name: deploy
 
 on:
+  push:
   release:
     types: [published]
 
@@ -21,6 +22,9 @@ jobs:
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       - name: Build image
         run: docker build . --file Dockerfile --tag jugirard/transactions-sync-process:${{steps.vars.outputs.tag}} --tag jugirard/transactions-sync-process:latest
+        env:
+          GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push Docker Image
         run: docker push jugirard/transactions-sync-process:${{steps.vars.outputs.tag}}
       - name: Push Docker Image latest tag

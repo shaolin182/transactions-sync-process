@@ -10,7 +10,7 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
-//	mavenLocal()
+	mavenLocal()
 	maven {
 		name = "GitHubPackages"
 		url = uri("https://maven.pkg.github.com/shaolin182/transactions-java")
