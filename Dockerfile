@@ -13,7 +13,7 @@ RUN chmod +x gradlew
 RUN ./gradlew build
 
 FROM openjdk:11-jdk
-COPY application.properties application.properties
+#COPY application.properties application.properties
 COPY --from=build /workspace/build/libs/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app.jar"]
