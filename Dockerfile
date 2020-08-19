@@ -10,7 +10,7 @@ RUN mkdir -p /workspace
 WORKDIR /workspace
 COPY . /workspace
 RUN chmod +x gradlew
-RUN ./gradlew build
+RUN ./gradlew --no-daemon build
 
 FROM openjdk:11-jdk
 #COPY application.properties application.properties
