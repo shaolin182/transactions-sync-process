@@ -1,8 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.3.3.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
-	id "org.sonarqube" version "3.0"
+	id "org.springframework.boot"
+	id "org.sonarqube"
+	id "jacoco"
 }
 
 sonarqube {
@@ -12,35 +11,71 @@ sonarqube {
 	}
 }
 
-group = 'org.transactions'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+allprojects {
+	group = 'org.transactions'
+	version = '0.0.1-SNAPSHOT'
 
-repositories {
-	mavenCentral()
-	mavenLocal()
-	maven {
-		name = "GitHubPackages"
-		url = uri("https://maven.pkg.github.com/shaolin182/transactions-java")
-		credentials {
-			username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-			password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+	jacoco {
+		toolVersion = '0.8.5'
+	}
+}
+
+subprojects {
+	apply plugin: "java"
+	apply plugin: "jacoco"
+	apply plugin: "io.spring.dependency-management"
+	apply plugin: "org.springframework.boot"
+
+	sourceCompatibility = 11
+	targetCompatibility = 11
+
+	repositories {
+		mavenCentral()
+		mavenLocal()
+
+		// Github Maven Repo
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/shaolin182/transactions-java")
+			credentials {
+				username = System.getenv("GITHUB_USERNAME")
+				password = System.getenv("GITHUB_TOKEN")
+			}
 		}
 	}
-}
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+//		implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
+
+		implementation "org.transactions:model:${property('transaction.version')}"
+//		implementation "org.transactions:persistence-mongodb:${property('transaction.version')}"
 	}
 
-	implementation 'org.transactions:model:1.1-SNAPSHOT'
-	implementation 'org.transactions:persistence-mongodb:1.1-SNAPSHOT'
+	jacocoTestReport {
+//		additionalSourceDirs = files(sourceSets.main.allSource.srcDirs)
+//		sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+//		classDirectories =  files(sourceSets.main.output)
+		reports {
+			html.enabled true
+			xml.enabled true
+		}
+	}
+
+	test.finalizedBy jacocoTestReport
+
+	test {
+		useJUnitPlatform()
+	}
+
 }
 
-test {
-	useJUnitPlatform()
-}
+
+
+
+
+
