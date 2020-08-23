@@ -8,6 +8,7 @@ plugins {
 sonarqube {
 	properties {
 		property "sonar.organization", "shaolin182"
+		property "sonar.projectKey", "transactions-sync-process"
 	}
 }
 
