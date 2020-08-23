@@ -1,1 +1,10 @@
+pluginManagement {
+    plugins {
+        id "org.springframework.boot" version getProperty('spring.version')
+        id "org.sonarqube" version getProperty('sonarqube.version')
+    }
+}
+
 rootProject.name = 'transactions-sync-process'
+include 'api'
+
