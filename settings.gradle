@@ -6,5 +6,7 @@ pluginManagement {
 }
 
 rootProject.name = 'transactions-sync-process'
+
 include 'api'
+include 'sync-service'
 
