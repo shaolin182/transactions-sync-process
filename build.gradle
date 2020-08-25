@@ -73,6 +73,8 @@ project(':api'){
 	apply plugin: "org.springframework.boot"
 
 	dependencies {
+		implementation project(":sync-service")
+		implementation "org.transactions:common-connector:${property('transaction.version')}"
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 	}
 }

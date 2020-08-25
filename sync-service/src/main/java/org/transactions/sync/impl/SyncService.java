@@ -16,6 +16,7 @@ public class SyncService implements ISyncService {
 
     ITransactionsReadOnlyDatasource transactionsDatasource;
 
+
     @Autowired
     public SyncService(ITransactionsReadOnlyDatasource readOnlyDatasource, ITransactionsAggregateDatasource aggregateDatasource){
         this.aggregateDatasource = aggregateDatasource;
