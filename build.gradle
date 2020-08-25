@@ -24,7 +24,6 @@ subprojects {
 	apply plugin: "java"
 	apply plugin: "jacoco"
 	apply plugin: "io.spring.dependency-management"
-	apply plugin: "org.springframework.boot"
 
 	sourceCompatibility = 11
 	targetCompatibility = 11
@@ -45,21 +44,17 @@ subprojects {
 	}
 
 	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+//		implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
 //		implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-		implementation 'org.springframework.boot:spring-boot-starter-web'
+
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 		}
 
-		implementation "org.transactions:model:${property('transaction.version')}"
 //		implementation "org.transactions:persistence-mongodb:${property('transaction.version')}"
 	}
 
 	jacocoTestReport {
-//		additionalSourceDirs = files(sourceSets.main.allSource.srcDirs)
-//		sourceDirectories = files(sourceSets.main.allSource.srcDirs)
-//		classDirectories =  files(sourceSets.main.output)
 		reports {
 			html.enabled true
 			xml.enabled true
@@ -72,6 +67,28 @@ subprojects {
 		useJUnitPlatform()
 	}
 
+}
+
+project(':api'){
+	apply plugin: "org.springframework.boot"
+
+	dependencies {
+		implementation project(":sync-service")
+		implementation "org.transactions:common-connector:${property('transaction.version')}"
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+	}
+}
+
+project (':sync-service') {
+	dependencies {
+		implementation "org.springframework.boot:spring-boot-starter:${property('spring.version')}"
+		implementation "org.transactions:model:${property('transaction.version')}"
+		implementation "org.transactions:common-connector:${property('transaction.version')}"
+
+		testImplementation("org.springframework.boot:spring-boot-starter-test:${property('spring.version')}") {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
+	}
 }
 
 
