@@ -5,9 +5,12 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.transactions.persistence.repositories.TransactionAggregateRepository;
+import org.transactions.persistence.repositories.TransactionsRepository;
 import org.transactions.sync.ISyncService;
 
 import static org.mockito.Mockito.times;
@@ -28,6 +31,12 @@ class SyncControllerTest {
             return Mockito.mock(ISyncService.class);
         }
     }
+
+    @MockBean
+    TransactionsRepository repository;
+
+    @MockBean
+    TransactionAggregateRepository aggregateRepository;
 
     @Autowired
     ISyncService syncService;

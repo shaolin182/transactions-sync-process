@@ -1,0 +1,125 @@
+[
+    {
+        "id" : "1",
+        "description" : "a fake description",
+        "transactions" : [
+            {
+                "category" : {
+                    "id": 1,
+                    "category" : "category A",
+                    "label" : "label category A"
+                },
+                "bankAccount" : {
+                    "id": 1,
+                    "category" : "category A",
+                    "label" : "label bank account A"
+                },
+                "income" : 1,
+                "outcome": 0
+            },
+            {
+                "category" : {
+                    "id": 1,
+                    "category" : "category B",
+                    "label" : "label category B"
+                },
+                "bankAccount" : {
+                    "id": 1,
+                    "category" : "category B",
+                    "label" : "label bank account B"
+                },
+                "income" : 1,
+                "outcome": 0
+            }
+
+        ],
+        "cost" : 200,
+        "costAbs" : 200
+    },
+    {
+        "id" : "2",
+        "description" : "a fake description",
+        "transactions" : [
+            {
+                "category" : {
+                    "id": 2,
+                    "category" : "category 2A ",
+                    "label" : "label category 2A"
+                },
+                "bankAccount" : {
+                    "id": 2,
+                    "category" : "category 2A",
+                    "label" : "label bank account 2A"
+                },
+                "income" : 2,
+                "outcome": 0
+            },
+            {
+                "category" : {
+                    "id": 2,
+                    "category" : "category 2B ",
+                    "label" : "label category 2B"
+                },
+                "bankAccount" : {
+                    "id": 2,
+                    "category" : "category 2B",
+                    "label" : "label bank account 2B"
+                },
+                "income" : 2,
+                "outcome": 0
+            }
+        ],
+        "cost" : 400,
+        "costAbs" : 400
+    },
+    {
+        "id" : "3",
+        "description" : "a fake description",
+        "transactions" : [
+            {
+                "category" : {
+                    "id": 3,
+                    "category" : "category 3A",
+                    "label" : "label category 3A"
+                },
+                "bankAccount" : {
+                    "id": 3,
+                    "category" : "category 3A",
+                    "label" : "label bank account 3A"
+                },
+                "income" : 2,
+                "outcome": 0
+            },
+            {
+                "category" : {
+                    "id": 3,
+                    "category" : "category 3B",
+                    "label" : "label category 3B"
+                },
+                "bankAccount" : {
+                    "id": 3,
+                    "category" : "category 3B",
+                    "label" : "label bank account 3B"
+                },
+                "income" : 4,
+                "outcome": 0
+            },
+            {
+                "category" : {
+                    "id": 3,
+                    "category" : "category 3C",
+                    "label" : "label category 3C"
+                },
+                "bankAccount" : {
+                    "id": 3,
+                    "category" : "category 3C",
+                    "label" : "label bank account 3C"
+                },
+                "income" : 3,
+                "outcome": 0
+            }
+        ],
+        "cost" : 900,
+        "costAbs" : 900
+    }
+]

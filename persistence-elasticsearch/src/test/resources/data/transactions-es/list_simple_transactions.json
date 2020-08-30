@@ -1,0 +1,82 @@
+[
+    {
+        "id" : "1a",
+        "description" : "a fake description",
+        "category" : {
+            "id": 1,
+            "category" : "category",
+            "label" : "label category"
+        },
+        "from" : {
+            "id": 1,
+            "category" : "category",
+            "label" : "label bank account"
+        },
+        "income" : 1,
+        "outcome": 0,
+        "cost" : 100,
+        "costAbs": 100,
+        "costDecimal": 1.0,
+        "costAbsDecimal": 1.0
+    },
+    {
+        "id" : "2b",
+        "description" : "a fake description",
+        "category" : {
+            "id": 2,
+            "category" : "category 2 ",
+            "label" : "label category 2"
+        },
+        "from" : {
+            "id": 2,
+            "category" : "category 2",
+            "label" : "label bank account 2"
+        },
+        "income" : 2,
+        "outcome": 0,
+        "cost" : 200,
+        "costAbs": 200,
+        "costDecimal": 2.0,
+        "costAbsDecimal": 2.0
+    },
+    {
+        "id" : "3c",
+        "description" : "a fake description",
+        "category" : {
+            "id": 3,
+            "category" : "category 3",
+            "label" : "label category 3"
+        },
+        "from" : {
+            "id": 3,
+            "category" : "category 3",
+            "label" : "label bank account 3"
+        },
+        "income" : 3,
+        "outcome": 0,
+        "cost" : 300,
+        "costAbs": 300,
+        "costDecimal": 3.0,
+        "costAbsDecimal": 3.0
+    },
+    {
+        "id" : "4d",
+        "description" : "a fake description",
+        "category" : {
+            "id": 4,
+            "category" : "category 4",
+            "label" : "label category 4"
+        },
+        "from" : {
+            "id": 4,
+            "category" : "category 4",
+            "label" : "label bank account 4"
+        },
+        "income" : 4,
+        "outcome": 0,
+        "cost" : 400,
+        "costAbs": 400,
+        "costDecimal": 4.0,
+        "costAbsDecimal": 4.0
+    }
+]
