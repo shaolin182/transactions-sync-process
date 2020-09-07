@@ -1,0 +1,90 @@
+[
+    {
+        "id" : "1a",
+        "description" : "a fake description",
+        "transactions" : [
+            {
+                "category" : {
+                    "id": 1,
+                    "category" : "category",
+                    "label" : "label category"
+                },
+                "bankAccount" : {
+                    "id": 1,
+                    "category" : "category",
+                    "label" : "label bank account"
+                },
+                "income" : 1,
+                "outcome": 0
+            }
+        ],
+        "cost" : 100,
+        "costAbs" : 100
+    },
+    {
+        "id" : "2b",
+        "description" : "a fake description",
+        "transactions" : [
+            {
+                "category" : {
+                    "id": 2,
+                    "category" : "category 2 ",
+                    "label" : "label category 2"
+                },
+                "bankAccount" : {
+                    "id": 2,
+                    "category" : "category 2",
+                    "label" : "label bank account 2"
+                },
+                "income" : 2,
+                "outcome": 0
+            }
+        ],
+        "cost" : 200,
+        "costAbs" : 200
+    },
+    {
+        "id" : "3c",
+        "description" : "a fake description",
+        "transactions" : [
+            {
+                "category" : {
+                    "id": 3,
+                    "category" : "category 3",
+                    "label" : "label category 3"
+                },
+                "bankAccount" : {
+                    "id": 3,
+                    "category" : "category 3",
+                    "label" : "label bank account 3"
+                },
+                "income" : 3,
+                "outcome": 0
+            }
+        ],
+        "cost" : 300,
+        "costAbs" : 300
+    },
+    {
+        "id" : "4d",
+        "description" : "a fake description",
+        "transactions" : [
+            {
+                "category" : {
+                    "id": 4,
+                    "category" : "category 4",
+                    "label" : "label category 4"
+                },
+                "bankAccount" : {
+                    "id": 4,
+                    "category" : "category 4",
+                    "label" : "label bank account 4"
+                },
+                "income" : 4,
+                "outcome": 0
+            }
+        ],
+        "cost" : 400,
+        "costAbs" : 400
+    }
+]

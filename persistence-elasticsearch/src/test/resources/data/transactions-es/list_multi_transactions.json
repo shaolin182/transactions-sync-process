@@ -1,0 +1,143 @@
+[
+    {
+        "id": "1",
+        "description": "a fake description",
+        "category": {
+            "id": 1,
+            "category": "category A",
+            "label": "label category A"
+        },
+        "from": {
+            "id": 1,
+            "category": "category A",
+            "label": "label bank account A"
+        },
+        "income": 1,
+        "outcome": 0,
+        "cost": 100,
+        "costAbs": 100,
+        "costDecimal": 1.0,
+        "costAbsDecimal": 1.0
+    },
+    {
+        "id": "1",
+        "description": "a fake description",
+        "category" : {
+            "id": 1,
+            "category" : "category B",
+            "label" : "label category B"
+        },
+        "from" : {
+            "id": 1,
+            "category" : "category B",
+            "label" : "label bank account B"
+        },
+        "income": 1,
+        "outcome": 0,
+        "cost": 100,
+        "costAbs": 100,
+        "costDecimal": 1.0,
+        "costAbsDecimal": 1.0
+    },
+    {
+        "id" : "2",
+        "description" : "a fake description",
+        "category" : {
+            "id": 2,
+            "category" : "category 2A ",
+            "label" : "label category 2A"
+        },
+        "from" : {
+            "id": 2,
+            "category" : "category 2A",
+            "label" : "label bank account 2A"
+        },
+        "income" : 2,
+        "outcome": 0,
+        "cost" : 200,
+        "costAbs": 200,
+        "costDecimal": 2.0,
+        "costAbsDecimal": 2.0
+    },
+    {
+        "id" : "2",
+        "description" : "a fake description",
+        "category" : {
+            "id": 2,
+            "category" : "category 2B ",
+            "label" : "label category 2B"
+        },
+        "from" : {
+            "id": 2,
+            "category" : "category 2B",
+            "label" : "label bank account 2B"
+        },
+        "income" : 2,
+        "outcome": 0,
+        "cost" : 200,
+        "costAbs": 200,
+        "costDecimal": 2.0,
+        "costAbsDecimal": 2.0
+    },
+    {
+        "id" : "3",
+        "description" : "a fake description",
+        "category" : {
+            "id": 3,
+            "category" : "category 3A",
+            "label" : "label category 3A"
+        },
+        "from" : {
+            "id": 3,
+            "category" : "category 3A",
+            "label" : "label bank account 3A"
+        },
+        "income" : 2,
+        "outcome": 0,
+        "cost" : 200,
+        "costAbs": 200,
+        "costDecimal": 2.0,
+        "costAbsDecimal": 2.0
+
+    },
+    {
+        "id" : "3",
+        "description" : "a fake description",
+        "category" : {
+            "id": 3,
+            "category" : "category 3B",
+            "label" : "label category 3B"
+        },
+        "from" : {
+            "id": 3,
+            "category" : "category 3B",
+            "label" : "label bank account 3B"
+        },
+        "income" : 4,
+        "outcome": 0,
+        "cost" : 400,
+        "costAbs": 400,
+        "costDecimal": 4.0,
+        "costAbsDecimal": 4.0
+    },
+    {
+        "id" : "3",
+        "description" : "a fake description",
+        "category" : {
+            "id": 3,
+            "category" : "category 3C",
+            "label" : "label category 3C"
+        },
+        "from" : {
+            "id": 3,
+            "category" : "category 3C",
+            "label" : "label bank account 3C"
+        },
+        "income" : 3,
+        "outcome": 0,
+        "cost" : 300,
+        "costAbs": 300,
+        "costDecimal": 3.0,
+        "costAbsDecimal": 3.0
+    }
+]

@@ -2,12 +2,15 @@ plugins {
 	id "org.springframework.boot"
 	id "org.sonarqube"
 	id "jacoco"
+	id "com.adarshr.test-logger"
 }
 
 sonarqube {
 	properties {
 		property "sonar.organization", "shaolin182"
 		property "sonar.projectKey", "transactions-sync-process"
+		property "sonar.jacoco.reportPaths", "${project.buildDir}/reports/jacoco/codeCoverageReport/"
+		property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco/codeCoverageReport/codeCoverageReport.xml"
 	}
 }
 
@@ -18,15 +21,6 @@ allprojects {
 	jacoco {
 		toolVersion = '0.8.5'
 	}
-}
-
-subprojects {
-	apply plugin: "java"
-	apply plugin: "jacoco"
-	apply plugin: "io.spring.dependency-management"
-
-	sourceCompatibility = 11
-	targetCompatibility = 11
 
 	repositories {
 		mavenCentral()
@@ -42,26 +36,34 @@ subprojects {
 			}
 		}
 	}
+}
+
+
+
+subprojects {
+	apply plugin: "java"
+	apply plugin: "jacoco"
+	apply plugin: "io.spring.dependency-management"
+	apply plugin: "com.adarshr.test-logger"
+
+	sourceCompatibility = 11
+	targetCompatibility = 11
 
 	dependencies {
-//		implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
-//		implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-
-		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		testImplementation("org.springframework.boot:spring-boot-starter-test:${property('spring.version')}") {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 		}
 
-//		implementation "org.transactions:persistence-mongodb:${property('transaction.version')}"
 	}
 
-	jacocoTestReport {
-		reports {
-			html.enabled true
-			xml.enabled true
-		}
-	}
+//	jacocoTestReport {
+//		reports {
+//			html.enabled true
+//			xml.enabled true
+//		}
+//	}
 
-	test.finalizedBy jacocoTestReport
+//	test.finalizedBy jacocoTestReport
 
 	test {
 		useJUnitPlatform()
@@ -74,20 +76,73 @@ project(':api'){
 
 	dependencies {
 		implementation project(":sync-service")
+		implementation project(":persistence-elasticsearch")
 		implementation "org.transactions:common-connector:${property('transaction.version')}"
-		implementation 'org.springframework.boot:spring-boot-starter-web'
+		implementation "org.springframework.boot:spring-boot-starter-web"
+		implementation "org.springframework.boot:spring-boot-starter-data-mongodb"
+		implementation "org.springframework.boot:spring-boot-starter-data-elasticsearch"
+
+		// For mocking repository
+		testImplementation "org.transactions:persistence-mongodb:${property('transaction.version')}"
+
 	}
 }
 
 project (':sync-service') {
 	dependencies {
 		implementation "org.springframework.boot:spring-boot-starter:${property('spring.version')}"
-		implementation "org.transactions:model:${property('transaction.version')}"
 		implementation "org.transactions:common-connector:${property('transaction.version')}"
+		implementation "org.transactions:persistence-mongodb:${property('transaction.version')}"
+	}
+}
 
-		testImplementation("org.springframework.boot:spring-boot-starter-test:${property('spring.version')}") {
-			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+project (':persistence-elasticsearch') {
+	dependencies {
+		implementation project(":sync-service")
+
+		implementation "org.springframework.boot:spring-boot-starter-data-elasticsearch:${property('spring.version')}"
+		implementation "org.springframework.boot:spring-boot-starter:${property('spring.version')}"
+		implementation "org.transactions:model:${property('transaction.version')}"
+
+		testImplementation "org.hamcrest:hamcrest-all:${property('hamcrest-all.version')}"
+	}
+}
+
+
+
+// task to gather code coverage from multiple subprojects
+// NOTE: the `JacocoReport` tasks do *not* depend on the `test` task by default. Meaning you have to ensure
+// that `test` (or other tasks generating code coverage) run before generating the report.
+// You can achieve this by calling the `test` lifecycle task manually
+// $ ./gradlew test codeCoverageReport
+tasks.register("codeCoverageReport", JacocoReport) {
+	// If a subproject applies the 'jacoco' plugin, add the result it to the report
+	subprojects { subproject ->
+		subproject.plugins.withType(JacocoPlugin).configureEach {
+			subproject.tasks.matching({ t -> t.extensions.findByType(JacocoTaskExtension) }).configureEach { testTask ->
+				sourceSets subproject.sourceSets.main
+				executionData(testTask)
+			}
+
+			// To automatically run `test` every time `./gradlew codeCoverageReport` is called,
+			// you may want to set up a task dependency between them as shown below.
+			// Note that this requires the `test` tasks to be resolved eagerly (see `forEach`) which
+			// may have a negative effect on the configuration time of your build.
+			subproject.tasks.matching({ t -> t.extensions.findByType(JacocoTaskExtension) }).forEach {
+				rootProject.tasks.codeCoverageReport.dependsOn(it)
+			}
 		}
+	}
+
+	// enable the different report types (html, xml, csv)
+	reports {
+		// xml is usually used to integrate code coverage with
+		// other tools like SonarQube, Coveralls or Codecov
+		xml.enabled true
+
+		// HTML reports can be used to see code coverage
+		// without any external tools
+		html.enabled true
 	}
 }
 
