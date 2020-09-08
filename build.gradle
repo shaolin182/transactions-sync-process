@@ -38,8 +38,6 @@ allprojects {
 	}
 }
 
-
-
 subprojects {
 	apply plugin: "java"
 	apply plugin: "jacoco"
@@ -56,15 +54,6 @@ subprojects {
 
 	}
 
-//	jacocoTestReport {
-//		reports {
-//			html.enabled true
-//			xml.enabled true
-//		}
-//	}
-
-//	test.finalizedBy jacocoTestReport
-
 	test {
 		useJUnitPlatform()
 	}
@@ -73,6 +62,10 @@ subprojects {
 
 project(':api'){
 	apply plugin: "org.springframework.boot"
+
+	bootRun {
+		jvmArgs = ["-DenvTarget=dev"]
+	}
 
 	dependencies {
 		implementation project(":sync-service")
@@ -145,6 +138,8 @@ tasks.register("codeCoverageReport", JacocoReport) {
 		html.enabled true
 	}
 }
+
+
 
 
 

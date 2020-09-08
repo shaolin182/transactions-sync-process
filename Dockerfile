@@ -13,7 +13,9 @@ RUN chmod +x gradlew
 RUN ./gradlew --no-daemon build
 
 FROM openjdk:11-jdk
-#COPY application.properties application.properties
+
+ENV TARGET_ENV=dev
+
 COPY --from=build /workspace/api/build/libs/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-DenvTarget=${TARGET_ENV}", "-jar","/app.jar"]
