@@ -19,7 +19,7 @@ public class ElasticSearchClientConfig extends AbstractElasticsearchConfiguratio
      * @return : a client for connecting to elastic search
      */
     @Override
-    @Bean
+    @Bean(name = "esClientTransactions")
     public RestHighLevelClient elasticsearchClient() {
         final ClientConfiguration clientConfiguration = ClientConfiguration.builder()
                 .connectedTo(esConfig.getHostname())
