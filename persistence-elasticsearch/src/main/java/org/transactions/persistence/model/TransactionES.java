@@ -34,6 +34,8 @@ public class TransactionES {
 
     private OffsetDateTime dateTime;
 
+    private String dateTimeFormatted;
+
     public String getId() {
         return id;
     }
@@ -130,13 +132,20 @@ public class TransactionES {
         this.costAbs = costAbs;
     }
 
+    public String getDateTimeFormatted() {
+        return dateTimeFormatted;
+    }
+
+    public void setDateTimeFormatted(String dateTimeFormatted) {
+        this.dateTimeFormatted = dateTimeFormatted;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionES that = (TransactionES) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(description, that.description) &&
+        return  Objects.equals(description, that.description) &&
                 Objects.equals(from, that.from) &&
                 Objects.equals(to, that.to) &&
                 Objects.equals(category, that.category) &&
@@ -146,12 +155,13 @@ public class TransactionES {
                 Objects.equals(costAbs, that.costAbs) &&
                 Objects.equals(income, that.income) &&
                 Objects.equals(outcome, that.outcome) &&
-                Objects.equals(dateTime, that.dateTime);
+                Objects.equals(dateTime, that.dateTime) &&
+                Objects.equals(dateTimeFormatted, that.dateTimeFormatted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, from, to, category, costDecimal, costAbsDecimal, cost, costAbs, income, outcome, dateTime);
+        return Objects.hash(id, description, from, to, category, costDecimal, costAbsDecimal, cost, costAbs, income, outcome, dateTime, dateTimeFormatted);
     }
 
     @Override

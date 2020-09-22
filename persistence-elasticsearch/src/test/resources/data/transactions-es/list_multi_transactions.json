@@ -1,43 +1,43 @@
 [
     {
-        "id": "1",
-        "description": "a fake description",
-        "category": {
-            "id": 1,
-            "category": "category A",
-            "label": "label category A"
-        },
-        "from": {
-            "id": 1,
-            "category": "category A",
-            "label": "label bank account A"
-        },
-        "income": 1,
-        "outcome": 0,
-        "cost": 100,
-        "costAbs": 100,
-        "costDecimal": 1.0,
-        "costAbsDecimal": 1.0
-    },
-    {
-        "id": "1",
+        "id": "5f2c159c7602f27ba01133e3",
         "description": "a fake description",
         "category" : {
-            "id": 1,
-            "category" : "category B",
-            "label" : "label category B"
+            "id": 17,
+            "category" : "Autres",
+            "label" : "Cadeaux"
         },
         "from" : {
-            "id": 1,
-            "category" : "category B",
-            "label" : "label bank account B"
+            "id": 21,
+            "category" : "Commun",
+            "label" : "CMB"
         },
-        "income": 1,
-        "outcome": 0,
-        "cost": 100,
-        "costAbs": 100,
-        "costDecimal": 1.0,
-        "costAbsDecimal": 1.0
+        "income" : 0,
+        "outcome": 39.95000076293945,
+        "cost": -3995,
+        "costAbs": 3995,
+        "costDecimal": -39.95,
+        "costAbsDecimal": 39.95
+    },
+    {
+        "id": "5f2c159c7602f27ba01133e3",
+        "description": "a fake description",
+        "category" : {
+            "id": 14,
+            "category" : "Alimentaire",
+            "label" : "Supermarché"
+        },
+        "from" : {
+            "id": 21,
+            "category" : "Commun",
+            "label" : "CMB"
+        },
+        "income" : 0,
+        "outcome": 35.16999816894531,
+        "cost": -3517,
+        "costAbs": 3517,
+        "costDecimal": -35.17,
+        "costAbsDecimal": 35.17
     },
     {
         "id" : "2",

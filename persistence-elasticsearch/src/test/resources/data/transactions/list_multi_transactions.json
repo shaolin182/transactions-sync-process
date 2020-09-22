@@ -1,40 +1,40 @@
 [
     {
-        "id" : "1",
+        "id" : "5f2c159c7602f27ba01133e3",
         "description" : "a fake description",
         "transactions" : [
             {
                 "category" : {
-                    "id": 1,
-                    "category" : "category A",
-                    "label" : "label category A"
+                    "id": 17,
+                    "category" : "Autres",
+                    "label" : "Cadeaux"
                 },
                 "bankAccount" : {
-                    "id": 1,
-                    "category" : "category A",
-                    "label" : "label bank account A"
+                    "id": 21,
+                    "category" : "Commun",
+                    "label" : "CMB"
                 },
-                "income" : 1,
-                "outcome": 0
+                "income" : 0,
+                "outcome": 39.95000076293945
             },
             {
                 "category" : {
-                    "id": 1,
-                    "category" : "category B",
-                    "label" : "label category B"
+                    "id": 14,
+                    "category" : "Alimentaire",
+                    "label" : "Supermarché"
                 },
                 "bankAccount" : {
-                    "id": 1,
-                    "category" : "category B",
-                    "label" : "label bank account B"
+                    "id": 21,
+                    "category" : "Commun",
+                    "label" : "CMB"
                 },
-                "income" : 1,
-                "outcome": 0
+                "income" : 0,
+                "outcome": 35.16999816894531
             }
 
         ],
-        "cost" : 200,
-        "costAbs" : 200
+        "cost" : -7512,
+        "costAbs" : 7512
     },
     {
         "id" : "2",

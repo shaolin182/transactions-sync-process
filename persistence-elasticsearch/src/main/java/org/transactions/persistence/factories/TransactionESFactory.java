@@ -5,7 +5,9 @@ import org.model.transactions.TransactionDetails;
 import org.springframework.stereotype.Component;
 import org.transactions.persistence.model.TransactionES;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
@@ -45,15 +47,19 @@ public class TransactionESFactory {
     private TransactionES buildTransactionES(TransactionDetails detail, Transaction transaction) {
         TransactionES result = new TransactionES();
 
-        result.setId(transaction.getId());
+        result.setId(transaction.getId() + "-" + UUID.randomUUID());
         result.setDateTime(transaction.getDate());
+
+        if (transaction.getDate() != null) {
+            result.setDateTimeFormatted(transaction.getDate().format(DateTimeFormatter.ISO_DATE_TIME));
+        }
 
         result.setCategory(detail.getCategory());
         result.setIncome(detail.getIncome());
         result.setOutcome(detail.getOutcome());
         result.setFrom(detail.getBankAccount());
 
-        result.setCost((long) (detail.getIncome() * 100 - detail.getOutcome() * 100));
+        result.setCost((long) (Math.round(detail.getIncome() * 100.0) - Math.round(detail.getOutcome() * 100.0)));
         result.setCostAbs(Math.abs(result.getCost()));
         result.setCostDecimal(detail.getIncome() - detail.getOutcome());
         result.setCostAbsDecimal(Math.abs(result.getCostDecimal()));
